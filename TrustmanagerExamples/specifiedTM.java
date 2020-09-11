@@ -26,9 +26,9 @@ public class specifiedTM{
                 caInput.close();
             }
             // create a KeyStore containing the trusted Certificates
-            String keyStoreType = KeyStore.getDefaultType();
-            KeyStore keyStore = KeyStore.getInstance(keyStoreType);
-            keyStore.load(null, null);
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            FileInputStream myKeyStore = new FileInputStream("mykeystore.jks");
+            keyStore.load(myKeyStore, null);
             keyStore.setCertificateEntry("ca", ca);
             // create a new TrustManager that trusts our KeyStore
             String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
